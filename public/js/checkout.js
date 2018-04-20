@@ -1,5 +1,4 @@
-Stripe.setPublishableKey('your_publishable_key');
-
+Stripe.setPublishableKey('');
  // Grab the form:
 var $form = $('#checkout-form');
  

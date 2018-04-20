@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-       //
+       return view('admin.categories.edit',['category'=>Category::findOrFail($category->id)]);
     }
 
     /**
@@ -90,7 +90,7 @@ class CategoryController extends Controller
 		
         Session::flash('success', 'Category updated');
 		
-        return redirect()->back();
+        return redirect()->route('category.index');
     }
 
     /**

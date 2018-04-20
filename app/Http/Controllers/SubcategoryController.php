@@ -16,7 +16,7 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.subcategories');
+        return view('admin.subcategories.index');
     }
 
     /**
@@ -70,7 +70,7 @@ class SubcategoryController extends Controller
      */
     public function edit(Subcategory $subcategory)
     {
-        //
+        return view('admin.subcategories.edit',['subcategory'=>Subcategory::findOrFail($subcategory->id)]);
     }
 
     /**
@@ -88,9 +88,8 @@ class SubcategoryController extends Controller
 		$subcategory->category_id = $request->category_id;
         $subcategory->save();
 		
-        Session::flash('success', 'You succesfully updated the category.');
-		
-        return redirect()->back();
+        Session::flash('success', 'Sub Category updated');
+        return redirect()->route('subcategory.index');
     }
 
     /**

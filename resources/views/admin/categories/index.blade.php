@@ -39,7 +39,7 @@
 					<td>{{ $category->name }}</td>
 					<td>{{ $category->description }}</td>
 					<td>
-						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#categoryModal{{$category}}">Edit</button>
+						<a href="{{ route('category.edit',['category'=>$category]) }}" class="btn btn-primary">Edit</a>
 					</td>		
 					<td>
 						<form action="{{ route('category.destroy', ['category' => $category->id]) }}" method="POST"
@@ -51,20 +51,19 @@
 						</form>
 					</td>
 				</tr>
-				
-				@include('admin.categories.edit')
 			@endforeach
 		@else
 			<h3>Empty</h3>
 		@endif
 	</tbody>
-</table>  
+</table> 	
 @endsection  
-			
+
 
 @section('javascript')
 	$(document).ready(function()
 	{
 		$('#categoriesTable').DataTable();
+
 	});
 @endsection

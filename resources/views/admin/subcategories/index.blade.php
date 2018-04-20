@@ -13,7 +13,7 @@
 		</div>
 		<div class="col-md-5">
 			<div class="form-group">
-				<select name="category_id" class="form-control">
+				<select name="category_id"  class="form-control">
 					@foreach($categories as $category)
 						<option value="{{ $category->id}}">{{ $category->name}}</option>
 					@endforeach
@@ -46,7 +46,7 @@
 					<td>{{ $subcategory->name }}</td>
 					<td>{{ $subcategory->category->name }}</td>
 					<td>
-						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#subcategoryModal">Edit</button>
+						<a href="{{ route('subcategory.edit',['subcategory'=>$subcategory]) }}" class="btn btn-primary btn-sm" >Edit</a>
 					</td>
 					
 					<td>
@@ -62,54 +62,12 @@
 			@endforeach
 		@endif
 	</tbody>
-</table>      
+</table>    
 @endsection
 
-<!-- Edit subCategory -->
-@if($subcategories->count())
-	<div class="modal fade" id="subcategoryModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Editting: {{ $subcategory->name }}</h5>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				
-				<div class="modal-body">			
-					<form action="{{ route('subcategory.update',['subcategory'=>$subcategory]) }}" method="POST" >
-						{{ csrf_field() }}
-						{{ method_field('PUT') }}
-											
-						<div class="form-group">				
-							<input type="text" name="name" class="form-control text-center" value="{{ $subcategory->name }}">				
-						</div>
-						<div class="form-group">
-							<select name="category_id" class="form-control">
-								@foreach($categories as $category)
-									<option value="{{ $category->id}}"
-										@if($subcategory->category->id == $category->id)
-											selected
-										@endif
-									>{{ $category->name}}</option>
-								@endforeach
-							</select>
-						</div>
-						<div class="form-group text-center">
-							<button class="btn btn-primary" type="submit">Update</button>
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-						</div>
-								
-					</form>				
-				</div>
-			</div>
-		</div>
-	</div>
-@endif
-
-
 @section('javascript')
-	$(document).ready(function()
-	{
-		$('#subTable').DataTable();
-	});
+$(document).ready(function()
+{
+	$('#subTable').DataTable();
+});
 @endsection
