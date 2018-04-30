@@ -17,6 +17,7 @@ Shipping
 /**
 sidemenu
 */
+
 #sideMenu {
 	width: 100%;
 	min-width:150px;
@@ -45,4 +46,15 @@ sidemenu
 #sideMenu > details > a:hover{
 	background:white;
 	font-weight: bold;
+}
+
+/**
+cart
+**/
+.total-price{
+	float:center;
+}
+
+.fas{
+	color:gray;
 }

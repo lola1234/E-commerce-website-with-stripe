@@ -15,6 +15,7 @@ class Cart
 			$this->totalPrice = $oldCart->totalPrice;
 		}
 	}
+	//Add or create
 	public function add($item, $id){
 		$storedItem=['qty'=>0, 'price'=>$item->price, 'item'=>$item];
 		if($this->items){
@@ -28,7 +29,7 @@ class Cart
 		$this->totalQty ++;
 		$this->totalPrice += $item->price;
 	}
-	
+	//reduce product by 1
 	public function decrQty($id){		
 		$this->items[$id]['qty']--;
 		$this->items[$id]['price']-=$this->items[$id]['item']['price'];
@@ -39,9 +40,10 @@ class Cart
 		}
 	}
 	
+	//remove a product from cart/ remove from session
 	public function removeItem($id){
 		$this->totalQty -= $this->items[$id]['qty'];
-		$this->totalPrice -= $this->items[$id]['qty'] * $this->items[$id]['price'];
+		$this->totalPrice -= $this->items[$id]['qty'] * $this->items[$id]['item']['price'];
 		unset($this->items[$id]);
 	}
 }

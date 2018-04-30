@@ -29,7 +29,8 @@ class CartController extends Controller
 		$cart->add($product, $product->id);
 		
 		$request->session()->put('cart', $cart);
-		return redirect()->back();
+		$productPrice = $cart->items[$id]['price'];
+		return response()->json(['cart'=>$cart,'price'=>$productPrice]);
 	}
 	
 	public function decr($id){
@@ -42,7 +43,8 @@ class CartController extends Controller
 		}else{
 			Session::forget('cart');			
 		}
-		return redirect()->back();
+		$productPrice = $cart->items[$id]['price'];
+		return response()->json(['cart'=>$cart,'price'=>$productPrice]);
 	}
 	
 	public function remove($id){
@@ -52,10 +54,11 @@ class CartController extends Controller
 		
 		if(count($cart->items) > 0){
 			Session::put('cart', $cart);
+			
 		}else{
 			Session::forget('cart');			
 		}		
-		return redirect()->back();
+		return response()->json($cart);
 	}
 	
 	public function checkout(){
@@ -75,7 +78,7 @@ class CartController extends Controller
 		$oldCart = Session::get('cart');
 		$cart = new Cart($oldCart);
 		
-		Stripe::setApiKey("your_api_key");
+		Stripe::setApiKey("sk_test_jv3SSHMGwQIUQdMrobOUid9y");
 		
 		try{
 			$charge = Charge::create(array(		    

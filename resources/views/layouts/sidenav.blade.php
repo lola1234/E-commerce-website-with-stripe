@@ -3,21 +3,15 @@
   <div class="sidebar-sticky">
 	<ul class="nav flex-column">
 	  <li class="nav-item">
-		<a class="nav-link active" href="/admin">
-		  <span data-feather="home"></span>
-		  Dashboard <span class="sr-only">(current)</span>
+		<a class="nav-link active" href="{{ route('product.index')}}">
+		  <span data-feather="shopping-cart"></span>
+		  Products <span class="sr-only">(current)</span>
 		</a>
 	  </li>
 	  <li class="nav-item">
 		<a class="nav-link" href="{{ route('order.index')}}">
 		  <span data-feather="file"></span>
 		  Orders
-		</a>
-	  </li>
-	  <li class="nav-item">
-		<a class="nav-link" href="{{ route('product.index')}}">
-		  <span data-feather="shopping-cart"></span>
-		  Products
 		</a>
 	  </li>
 	  <li class="nav-item">

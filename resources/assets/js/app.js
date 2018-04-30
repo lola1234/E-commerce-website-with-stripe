@@ -16,13 +16,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('addtocart', require('./components/Add.vue'));
-Vue.component('cartlength', require('./components/CartLength.vue'));
-Vue.component('cart', require('./components/Cart.vue'));
 
-import {store} from './store'
+
+
 
 const app = new Vue({
-    el: '#app',
-	store
+    el: '#app'
 });

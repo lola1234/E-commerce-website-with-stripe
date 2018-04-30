@@ -25,9 +25,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
+Route::get('/admin', 'ProductController@index');
+
 Route::get('/product/bin', 'ProductController@bin')->name('product.bin');
 Route::get('/product/restore/{id}', 'ProductController@restore')->name('product.restore');
 Route::get('/product/kill/{id}', 'ProductController@kill')->name('product.kill');
